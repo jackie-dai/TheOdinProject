@@ -12,6 +12,14 @@ let choices = ["Rock", "Paper", "Scissors"];
 let gameLoops = 5;
 let map = new Map();
 
+const ROCKBTN = document.getElementById("rockBtn");
+const PAPERBTN = document.getElementById("paperBtn");
+const SCISSORSBTN = document.getElementById("scissorsBtn");
+
+const playerOptions = document.querySelectorAll(".choices");
+
+playerOptions.forEach(choice => choice.addEventListener("click", game))
+
 function setUp() {
     map.set("rock", 0);
     map.set("paper", 1);
@@ -40,10 +48,10 @@ function playRound(playerChoice, computerChoice) {
     return [result, playerChoice, computerChoice];
 }
 
-function game() {
+function game(e) {
+    console.log(e.target);
     for (let i = 0; i < gameLoops; i++) {
-        let playerChoice = prompt("Rock, paper, or scissors?");
-        let results = playRound(map.get(playerChoice), getComputerChoice());
+        let results = playRound(map.get(e), getComputerChoice());
         
         switch (results[0]) {
             case 0:
@@ -62,7 +70,7 @@ function game() {
 
 function main() {
     setUp();
-    game();
+    //game();
 }
 
 main();
