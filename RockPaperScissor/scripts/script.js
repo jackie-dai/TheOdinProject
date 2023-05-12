@@ -10,6 +10,8 @@
 let graph = new DirectedGraph(3);
 let choices = ["Rock", "Paper", "Scissors"];
 let gameLoops = 5;
+let rounds = 0;
+let wins = 0;
 let map = new Map();
 
 const ROCKBTN = document.getElementById("rockBtn");
@@ -17,8 +19,10 @@ const PAPERBTN = document.getElementById("paperBtn");
 const SCISSORSBTN = document.getElementById("scissorsBtn");
 
 const playerOptions = document.querySelectorAll(".choices");
+const roundCounter = document.getElementById("roundCounter");
+const score = document.getElementById("score");
 
-playerOptions.forEach(choice => choice.addEventListener("click", game))
+playerOptions.forEach(choice => choice.addEventListener("click", playRound));
 
 function setUp() {
     map.set("rock", 0);
@@ -34,7 +38,7 @@ function getComputerChoice() {
     return computerDraw
 }
 
-function playRound(playerChoice, computerChoice) {
+function determineWinner(playerChoice, computerChoice) {
     let result; 
     if (playerChoice == computerChoice) {
         result = 0;
@@ -48,10 +52,30 @@ function playRound(playerChoice, computerChoice) {
     return [result, playerChoice, computerChoice];
 }
 
-function game(e) {
-    console.log(e.target);
+function playRound(choice) {
+    let results = determineWinner(map.get(choice.target.value), getComputerChoice())
+    switch (results[0]) {
+        case 0:
+            console.log("Tie.");
+            break;
+        case 1:
+            console.log("You win! " + choices[results[1]] + " beats " + choices[results[2]]);
+            wins += 1;
+            break;
+        case 2:
+            console.log("You lose! " + choices[results[2]] + " beats " + choices[results[1]]);
+            break;
+    }
+    rounds += 1;
+    roundCounter.innerHTML = "Round: " + rounds;
+    score.innerHTML = "Wins: " + wins
+}
+
+function game(playerChoice) {
+    console.log("choice: " + playerChoice.target.value);
+    let choice = playerChoice.target.value;
     for (let i = 0; i < gameLoops; i++) {
-        let results = playRound(map.get(e), getComputerChoice());
+        let results = determineWinner(map.get(choice), getComputerChoice());
         
         switch (results[0]) {
             case 0:
