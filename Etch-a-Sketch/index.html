@@ -8,12 +8,19 @@
         <title>Etch a Sketch</title>
     </head>
     <body>
-        <div id="grid"></div>
-        <div id="slider">
-            <p id="gridSizeLabel">50 x 50</p>
-            <input type="range" min="1" max="100" value="50" id="gridSizeSlider">
+        <h1 class="title">Etch-a-Sketch</h1>
+        <div id="container">
+            <div id="buttons">
+                <div id="slider">
+                    <p id="gridSizeLabel">50 x 50</p>
+                    <input type="range" min="1" max="100" value="50" id="gridSizeSlider">
+                </div>
+                <button id="clearBtn">Clear</button>
+            </div>
+            <div id="gridContainer">
+                <div id="grid"></div>
+            </div>
         </div>
-
         <script src="script.js"></script>
     </body>
 </html>

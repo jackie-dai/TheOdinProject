@@ -1,18 +1,67 @@
 
+.title {
+    font-family:Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+    font-size: 50px;
+    text-align: center;
+    padding-left: 100px;
+}
+#gridContainer {
+    margin: 20px;
+}
 #grid {
     display: flex;
-    flex: 1;
     flex-wrap: wrap;
-    width: 960px;
-    height: 960px;
+    flex: 1;
+    width: 540px;
+    height: 540px;
+    border: 10px solid black;
 }
 
-.square {
-    background: red;
-    margin: 1px; 
+#gridSizeLabel {
+    padding: 10px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
 }
 
 .square:hover {
-    background: lightblue;
+    background-color: lightgray;
 }
 
+#clearBtn {
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 4px;
+    border: none;
+    color: #fff;
+    background-color: #3498db;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+#clearBtn:hover {
+    background-color: #2980b9;
+}
+
+#clearBtn:active {
+    background-color: #1f6698;
+}
+
+body {
+    background-color: bisque;
+}
